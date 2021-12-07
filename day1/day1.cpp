@@ -10,7 +10,7 @@
  * Reads a file from the given path, and returns the file
  * contents to a string
  */
-std::unique_ptr<std::vector<std::string>> readFileFromInput(std::string path) {
+std::vector<std::string> readFileFromInput(std::string path) {
     std::ifstream file(path);
     auto lines = std::vector<std::string>();
     std::string linebuf;
@@ -22,18 +22,18 @@ std::unique_ptr<std::vector<std::string>> readFileFromInput(std::string path) {
         }
     }
 
-    return std::make_unique<std::vector<std::string>>(lines);
+    return lines;
 }
 
 /***
  * Compute the solution to part 1
  */
-int partOne(std::unique_ptr<std::vector<std::string>> & lines) {
+int partOne(std::vector<std::string> & lines) {
     auto depths = std::vector<int>();
     // Convert all of the strings to ints
     std::transform(
-        lines->begin(), 
-        lines->end(), 
+        lines.begin(), 
+        lines.end(), 
         std::back_inserter(depths), 
         [] (std::string s) {return std::stoi(s);}
     );
@@ -52,12 +52,12 @@ int partOne(std::unique_ptr<std::vector<std::string>> & lines) {
 /***
  * Compute the solution to part 2
  */
-int partTwo(std::unique_ptr<std::vector<std::string>> & lines) {
+int partTwo(std::vector<std::string> & lines) {
     auto depths = std::vector<int>();
     // Convert all of the strings to ints
     std::transform(
-        lines->begin(), 
-        lines->end(), 
+        lines.begin(), 
+        lines.end(), 
         std::back_inserter(depths), 
         [] (std::string s) {return std::stoi(s);}
     );
